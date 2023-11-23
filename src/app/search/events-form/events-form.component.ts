@@ -105,7 +105,7 @@ export class EventsFormComponent implements OnInit{
     if(!this.isChecked){
       const temploc = this.detailsForm.value.location
       console.log(temploc)
-      this.http.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${temploc}&key=AIzaSyAS2E85adysbVfdqUldzQHR1uIHEzT9vGc`)
+      this.http.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${temploc}&key=`)
       .subscribe(responseData=>{
         if(responseData['status'] == "ZERO_RESULTS"){
           this.showservice.errorData = true;
@@ -129,7 +129,7 @@ export class EventsFormComponent implements OnInit{
         }
       })
     }else{
-      this.http.get('https://ipinfo.io/json?token=1958320ba3c283').subscribe(responseData=>{
+      this.http.get('https://ipinfo.io/json?token=').subscribe(responseData=>{
         console.log(responseData['loc'])
         let tempLoc = responseData['loc'].split(",")
         this.showservice.lat = tempLoc[0]
