@@ -35,7 +35,7 @@ app.get('/:keyword/:distance/:category/:lat/:long',(req,res)=>{
     })
 })
 app.get('/:eventid', (req,res)=>{
-    fetch(`https://app.ticketmaster.com/discovery/v2/events/${req.params.eventid}?apikey=VOZ0fZAORazYQEeI7b9ZsSpyCqsn4U6o`)
+    fetch(`https://app.ticketmaster.com/discovery/v2/events/${req.params.eventid}?apikey=`)
     .then((response)=>response.json())
     .then((response)=>{
         res.send({response: response})
