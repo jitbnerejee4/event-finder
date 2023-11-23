@@ -28,7 +28,7 @@ app.get('/:keyword/:distance/:category/:lat/:long',(req,res)=>{
     else{
         segmentID = ""
     }
-    fetch(`https://app.ticketmaster.com/discovery/v2/events.json?apikey=VOZ0fZAORazYQEeI7b9ZsSpyCqsn4U6o&keyword=${req.params.keyword}&segmentId=${segmentID}&radius=${req.params.distance}&unit=miles&geoPoint=${geo}`)
+    fetch(`https://app.ticketmaster.com/discovery/v2/events.json?apikey=&keyword=${req.params.keyword}&segmentId=${segmentID}&radius=${req.params.distance}&unit=miles&geoPoint=${geo}`)
     .then((response)=>response.json())
     .then((response)=>{
         res.send({response: response})
@@ -43,7 +43,7 @@ app.get('/:eventid', (req,res)=>{
 })
 
 app.get('/suggest/:keyword', (req, res)=>{
-    fetch(`https://app.ticketmaster.com/discovery/v2/suggest?apikey=VOZ0fZAORazYQEeI7b9ZsSpyCqsn4U6o&keyword=${req.params.keyword}`)
+    fetch(`https://app.ticketmaster.com/discovery/v2/suggest?apikey=&keyword=${req.params.keyword}`)
     .then((response)=>response.json())
     .then((response)=>{
         res.send({response: response})
@@ -53,8 +53,8 @@ app.get('/suggest/:keyword', (req, res)=>{
 app.get('/artist/:artistname', (req, res)=>{
 
     var spotifyApi = new SpotifyWebApi({
-        clientId: '39bfad8b3b4141e994ee13e17e0d5c13',
-        clientSecret: '620b12c768c5454ab23ee4dc3a443891',
+        clientId: '',
+        clientSecret: '',
     });
     
     spotifyApi.clientCredentialsGrant().then(
@@ -73,8 +73,8 @@ app.get('/artist/:artistname', (req, res)=>{
 })
 app.get('/artist/album/:artistid', (req, res)=>{
     var spotifyApi = new SpotifyWebApi({
-        clientId: '39bfad8b3b4141e994ee13e17e0d5c13',
-        clientSecret: '620b12c768c5454ab23ee4dc3a443891',
+        clientId: '',
+        clientSecret: '',
     });
 
     spotifyApi.clientCredentialsGrant().then(
@@ -93,7 +93,7 @@ app.get('/artist/album/:artistid', (req, res)=>{
 })
 
 app.get('/venue/:venuename', (req, res)=>{
-    fetch(`https://app.ticketmaster.com/discovery/v2/venues.json?keyword=${req.params.venuename}&apikey=VOZ0fZAORazYQEeI7b9ZsSpyCqsn4U6o`)
+    fetch(`https://app.ticketmaster.com/discovery/v2/venues.json?keyword=${req.params.venuename}&apikey=`)
     .then((response)=>response.json())
     .then((response)=>{
         res.send({response: response})
