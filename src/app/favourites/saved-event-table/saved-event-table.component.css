@@ -1,0 +1,16 @@
+.fav-table{
+    text-align: center;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.no-result-container{
+    background-color: #fff;
+    border-radius: 31px;
+    text-align: center;
+    margin-top: 275px;
+}
+.no-result-container h5{
+    color: #B40606;
+    padding: 0;
+    margin: 0;
+}

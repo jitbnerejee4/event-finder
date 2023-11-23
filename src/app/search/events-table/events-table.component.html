@@ -1,0 +1,25 @@
+<!-- <h2>{{dataArray[0].name}}</h2> -->
+<div class="table-responsive table-container" [ngClass]="{'hide-table': getTableStatus}" style="border-radius: 10px;">
+            <table class="table table-dark table-striped align-middle list-table">
+                <thead>
+                <tr>
+                    <th scope="col" class="date">Date/Time</th>
+                    <th scope="col" class="icon">Icon</th>
+                    <th scope="col" class="event">Event</th>
+                    <th scope="col" class="genre">Genre</th>
+                    <th scope="col" class="venue">Venue</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let data of dataArray" class="datarow">
+                        <td class= {{data.id}} appListen style="cursor: pointer; font-weight: bold;"><span *ngIf="data.dates.start && data.dates.start.localDate">{{data.dates.start.localDate}}</span><br><span *ngIf="data.dates.start && data.dates.start.localTime">{{data.dates.start.localTime}}</span></td>
+                        <td class= {{data.id}} appListen style="cursor: pointer;"><div *ngIf="data.images && data.images[0].url"><img src="{{data.images[0].url}}" alt="eventicon" id="icon"></div></td>
+                        <td class= {{data.id}} appListen style="cursor: pointer;">{{data.name}}</td>
+                        <td class= {{data.id}} appListen style="cursor: pointer;"><div  *ngIf="data.classifications[0].genre && data.classifications[0].genre.name">{{data.classifications[0].genre.name}}</div></td>
+                        <td class= {{data.id}} appListen style="cursor: pointer;"><div  *ngIf="data._embedded.venues[0] && data._embedded.venues[0].name">{{data._embedded.venues[0].name}}</div></td>
+                    </tr>
+                </tbody>
+            </table>
+</div>
+
+

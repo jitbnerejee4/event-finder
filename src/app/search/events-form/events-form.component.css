@@ -1,0 +1,40 @@
+.form-container{
+    margin: auto;
+    background-color: rgba(255,255,255,0.16);
+    backdrop-filter: blur(8px);
+    border-radius: 20px;
+}
+
+.form-container h2{
+    color: white;
+    font-weight: 400;
+    margin-top: 50px;
+
+}
+.form-container hr{
+    color: white;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.form-container label{
+    color: white;  /*need to change the color*/
+    margin-bottom: 5px;
+}
+
+.form-container .form-row{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.form-container #caTegory{
+    width: 70%;
+}
+.form-container #autoLocation{
+    color: white;
+}
+.hide{
+    display: none;
+}
+.help-block{
+    color: white;
+}

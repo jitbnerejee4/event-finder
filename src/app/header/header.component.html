@@ -1,0 +1,17 @@
+<nav class="navbar mb-5">
+    <div class="container-fluid">
+      <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button> -->
+        <ul class="navbar-nav ms-auto flex-row">
+          <li class="nav-item">
+            <div class="search-nav" routerLinkActive="surrounded"[routerLinkActiveOptions]="{exact: true}"><a class="nav-link" id= "searchLink" routerLink="/search">Search</a></div>
+          </li>
+          <li class="nav-item">
+            <div class="fav-nav" routerLinkActive="surrounded"><a class="nav-link" id="favLink" routerLink="/favourites" (click)="hideInfo()">Favourites</a></div>
+          </li>
+        </ul>
+    </div>
+</nav>
+<!-- [ngClass]="{surrounded: addBorderSearch == true}" (click)="addBordertoSearch()"  -->
+<!-- [ngClass]="{surrounded: addBorderFav == true}" (click)="addBordertoFav()" -->

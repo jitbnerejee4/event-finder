@@ -1,0 +1,22 @@
+
+#searchLink{
+    color: white;
+}
+#favLink{
+    color: white;
+}
+.surrounded{
+    border: 2px solid white;
+    border-radius: 16px;
+}
+.search-nav{
+    text-align: center;
+    width: 85px;
+    margin-right: 5px;
+}
+
+.fav-nav{
+    text-align: center;
+    width: 100px;
+
+}

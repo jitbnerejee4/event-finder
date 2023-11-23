@@ -1,0 +1,21 @@
+<div class="row">
+    <div class="col-md-12">
+        <app-events-form></app-events-form>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <app-events-table *ngIf="showTable == true && getError == false"></app-events-table>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <app-event-search-details *ngIf="getEventsCard == true"></app-event-search-details>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <app-error *ngIf="getError == true"></app-error>
+    </div>
+</div>

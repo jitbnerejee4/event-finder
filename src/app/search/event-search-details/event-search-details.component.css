@@ -1,0 +1,173 @@
+.artist-container{
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.details-container{
+    margin-top: 100px;
+    padding-bottom: 40px;
+    margin-bottom: 40px;
+    /* width: 75%; */
+    background-color: rgba(255,255,255,0.16);
+    backdrop-filter: blur(15px);
+    color: #fff;
+
+}
+
+.back-btn{
+    padding-top: 10px;
+    margin-left: 10px;
+}
+.back-btn-link{
+    color: #fff;
+}
+.back-btn-link:hover{
+    color: #fff;
+}
+.header{
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 40px;
+}
+.mat-mdc-tab-labels  {
+    background-color: #3EA694;
+}
+.mat-mdc-tab:not(.mat-mdc-tab-disabled).mdc-tab--active .mdc-tab__text-label{
+    color: white;
+}
+.mat-mdc-tab .mdc-tab__text-label{
+    color: #00FFD3;
+}
+
+.info-container{
+    color: #fff;
+    text-align: center;
+}
+
+.info-container h5{
+    color: #00FFD3;
+    margin-bottom: 0;
+}
+.info-container p{
+    margin: 0;
+}
+.information{
+    margin-top: 20px;
+}
+
+.onsale{
+    background-color: green;
+}
+.offsale{
+    background-color: red;
+}
+.rescheduled{
+    background-color: orange;
+}
+.postponed{
+    background-color: orange;
+}
+.cancelled{
+    background-color: black;
+}
+#ticketStatus{
+    border-radius: 5px;
+    margin: auto;
+    height: 25px;
+}
+.seatImg{
+    width: 330px;
+    height: 270px;
+    /* margin-top: 125px; */
+}
+.twitter-icon{
+    font-size: 30px;
+    vertical-align: middle;
+    margin-left: 9px;
+    color: #6EABDF;
+}
+.facebook-icon{
+    font-size: 30px;
+    vertical-align: middle;
+    margin-left: 9px;
+}
+.facebook-icon:hover{
+    color: #0d6efd;
+}
+.fb-link:hover{
+    color: #0d6efd;
+}
+
+
+  /* artist tab */
+
+  .artist-container{
+    margin-top: 20px;
+  }
+  .artist-image-container h2{
+    color: #00FFD3;
+  }
+  .artist-img{
+    height: 150px;
+    width: 150px;
+    border-radius: 100px;
+    /* margin-left: 15%; */
+  }
+  .artist-details-container{
+    margin-top: 50px;
+  }
+  .artist-details-container h5{
+    color: #00FFD3;
+  }
+
+
+  .mat-mdc-progress-spinner{
+    --mdc-circular-progress-active-indicator-color: red;
+  }
+  .mat-mdc-progress-spinner .mdc-circular-progress__indeterminate-circle-graphic{
+    stroke: red;
+  }
+  .popularity-text{
+    position: relative;
+    top: -30px;
+    left: 12px;
+    font-size: 13px;
+  }
+  .pop{
+    margin-top: 15px;
+  }
+  .artist-details-container p{
+    margin-top: 20px;
+    font-weight: 500;
+  }
+  .spotify-link{
+    margin-top: 20px;
+  }
+  .spotify-icon{
+    font-size: 35px;
+    color: green;
+
+  }
+  .no-result-container{
+    background-color: #fff;
+    width: 70%;
+    border-radius: 31px;
+    text-align: center;
+    margin-top: 100px;
+    overflow: hidden;
+}
+.no-result-container h5{
+    color: #B40606;
+    padding: 0;
+    margin: 0;
+}
+
+.album-col{
+  margin-top: 4%; 
+  display: flex; 
+  justify-content: center;
+}
+.venue-table-container table td{
+  text-align: center;
+}
+

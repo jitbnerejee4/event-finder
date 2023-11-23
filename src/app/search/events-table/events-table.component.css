@@ -1,0 +1,40 @@
+.table-container{
+    margin-top: 100px;
+}
+
+.list-table{
+    color: #fff;
+    text-align: center;
+}
+.datarow{
+    height: 100px;
+}
+#icon{
+    width: 73px;
+    height: 45px;
+}
+.date{
+    width: 166px;
+}
+.venue{
+    width: 166px;
+}
+
+.genre{
+    width: 100px;
+}
+
+.venue{
+    width: 235px;
+}
+/* .datetime{
+    font-weight: bold;
+} */
+.list-table td a{
+    text-decoration: none;
+    color: #fff;
+}
+.hide-table{
+    display: none;
+}
+

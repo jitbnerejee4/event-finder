@@ -1,0 +1,230 @@
+<div class="container-md form-container" style="max-width: 900px; padding-left: 0; padding-right: 0;">
+    <div class="details-container">
+        <p class="back-btn">&lt;<a [routerLink]="" style="cursor: pointer;" (click)="changeState()" class="back-btn-link">Back</a></p>
+        <div class="container">
+            <div class="row header" style="display: flex; justify-content: center; align-items: center;">
+                <div class="col-sm-auto eventName-col">
+                    <h4 style="color: white;">{{eventName}}</h4> 
+                </div>
+                <div class="col-sm-auto event-icon-col">
+                    <div style="display: flex; justify-content: center;">
+                        <div style="width: 50px; height: 50px; background-color: white; border-radius: 50px; margin-left: 20px; display: flex; align-items: center; justify-content: center;">
+                            <a [routerLink]="" (click)="addtoFavourites()"><fa-icon [icon]="['far', 'heart']" style="font-size: 26px; color: red; cursor: pointer;" *ngIf="inFavourites == false"></fa-icon></a>
+                            <a  [routerLink]="" (click)="deleteFromFavourites()"><fa-icon [icon]="['fas', 'heart']" style="font-size: 26px; color: red; cursor: pointer;" *ngIf="inFavourites == true"></fa-icon></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="header" style="display: flex; align-items: center; justify-content: center; padding-left: 20px; padding-right: 20px;">
+            <h4 style="color: white;">{{eventName}}</h4> 
+            <div style="width: 50px; height: 50px; background-color: white; border-radius: 50px; margin-left: 20px; display: flex; align-items: center; justify-content: center;">
+                <a href="#/" (click)="addtoFavourites()"><fa-icon [icon]="['far', 'heart']" style="font-size: 26px; color: red;" *ngIf="inFavourites == false"></fa-icon></a>
+                <a href="#/" (click)="deleteFromFavourites()"><fa-icon [icon]="['fas', 'heart']" style="font-size: 26px; color: red;" *ngIf="inFavourites == true"></fa-icon></a>
+            </div>
+        </div> -->
+        <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="center" style='min-height:540px'> 
+            <mat-tab label="Events">
+                <div class="container info-container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="information" *ngIf="eventDate && eventTime">
+                                <h5>Date</h5>
+                                <p>{{eventDate}} {{eventTime}}</p>
+                            </div>
+                            <div class="information" *ngIf="eventArtists">
+                                <h5>Artist/Team</h5>
+                                <p>{{eventArtists}}</p>
+                            </div>
+                            <div class="information" *ngIf="eventVenue">
+                                <h5>Venue</h5>
+                                <p>{{eventVenue}}</p>
+                            </div>
+                            <div class="information" *ngIf="eventGenre">
+                                <h5>Genres</h5>
+                                <p>{{eventGenre}}</p>
+                            </div>
+                            <div class="information" *ngIf="eventPrice">
+                                <h5>Price Ranges</h5>
+                                <p>{{eventPrice}}</p>
+                            </div>
+                            <div class="information" *ngIf="eventTicket">
+                                <h5>Ticket Status</h5>
+                                <div [className]="eventClass" id="ticketStatus" style="display: inline-block;">
+                                    <p style="padding-left: 10px; padding-right: 10px;">{{eventTicket}}</p>
+                                </div>
+                            </div>
+                            <div class="information" *ngIf="buyTicketUrl" style="padding-bottom: 20px;">
+                                <h5>Buy Ticket At</h5>
+                                <p><a href={{buyTicketUrl}} *ngIf="buyTicketUrl" target="_blank">Ticketmaster</a></p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 d-flex justify-content-center align-items-center">
+                            <div *ngIf="seatUrl" class="seatDiv" style="display: flex; justify-content: center;">
+                                <img src={{seatUrl}} class="seatImg">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div>
+                                <span>Share on:</span>
+                                <span><a href="https://twitter.com/intent/tweet?text={{buyTicketUrl}}" target="_blank"><fa-icon [icon]="['fab', 'twitter']" class="twitter-icon"></fa-icon></a></span>
+                                <span><a href="https://www.facebook.com/dialog/feed?app_id=731610485282365&display=popup&link={{buyTicketUrl}}" target="_blank" class="fb-link"><fa-icon [icon]="['fab', 'facebook-square']" class="facebook-icon"></fa-icon></a></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </mat-tab>
+            <mat-tab label="Artist/Teams">
+                <ngb-carousel [showNavigationIndicators]="false" [showNavigationArrows] = "showNavigationArrows" class="overflow-hidden carousel-dark" [interval]="0" *ngIf="isMusic == true">
+                    <ng-template ngbSlide *ngFor="let artist of artistDetails">
+                        <div class="container">
+                            <div class="artist-container" style="margin-left: 8%; margin-right: 8%;">
+                                <div class="row d-flex justify-content-center align-items-center">
+                                    <div class="col-lg-3">
+                                        <div class="picsum-img-wrapper artist-image-container" style="text-align: center;">
+                                            <img src="{{artist.artistImageUrl}}" alt="" class="artist-img">
+                                            <h3>{{artist.artistName}}</h3>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-9">
+                                        <div class="row details-row">
+                                            <div class="col-lg-4">
+                                                <h5 style="text-align: center; color: #06FAD1;">Popularity</h5>
+                                                <!-- <p>{{artist.artistPopularity}}</p> -->
+                                                <div class="pop-container" style="display: flex; justify-content: center;">
+                                                    <div class="pop">
+                                                        <mat-progress-spinner
+                                                        class="example-margin"
+                                                        [value]="artist.artistPopularity" diameter="40">
+                                                        {{artist.artistPopularity}}
+                                                        </mat-progress-spinner>
+                                                        <div class="popularity-text">
+                                                            {{ artist.artistPopularity }}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <h5 style="text-align: center; color: #06FAD1;">Followers</h5>
+                                                <p style="text-align: center; margin-top: 20px; font-weight: bold;">{{artist.artistFollower}}</p>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <h5 style="text-align: center; color: #06FAD1;">Spotify Link</h5>
+                                                <div class="spotify-link" style="display: flex; justify-content: center;">
+                                                    <a href="{{artist.artistSpotify}}" target="_blank"><fa-icon [icon]="['fab', 'spotify']" class="spotify-icon"></fa-icon></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12 text-lg-start text-center" style="margin-top: 20px;">
+                                        <p style="color: #06FAD1;">Album featuring {{artist.artistName}}</p>
+                                    </div>
+                                </div>
+                            
+                                <div class="row">
+                                    <div class="col-lg-4 album-col" *ngFor="let artistAlbum of artist.artistAlbums" >
+                                            <img src="{{artistAlbum}}" alt="" style="width: 190px; height: 190px;">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-template>
+                </ngb-carousel>
+                <div class="container no-result-container" *ngIf="isMusic == false">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h5>No music related artist details to show</h5>
+                        </div>
+                    </div>
+                </div>
+            </mat-tab>
+            <mat-tab label="Venue">
+                <div class="container venue-table-container" style="margin-top: 40px;">
+                    <div class="row">
+                        <div class="col-md-6" style="text-align: center;">
+                            <div class="row">
+                                <div class="col-sm-12" *ngIf="venueName" class="align-top">
+                                    <h4 style="color: #00FFD3;">Name</h4>
+                                    <p style="color: #fff">{{venueName}}</p>
+                                </div>
+                                <div class="col-sm-12" *ngIf="venueAddress">
+                                    <h4 style="color: #00FFD3;">Address</h4>
+                                    <p style="color: #fff">{{venueAddress}}</p>
+                                </div>
+                                <div class="col-sm-12" *ngIf="venuePhoneNumber">
+                                    <h4 style="color: #00FFD3;">Phone Number</h4>
+                                    <p style="color: #fff">{{venuePhoneNumber}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6" style="text-align: center;">
+                            <div class="row">
+                                <div class="col-sm-12" *ngIf="openHourDetails" >
+                                    <h4 style="color: #00FFD3;">Open Hours</h4>
+                                    <div>
+                                        <p style="color: #fff; margin-bottom: 4px;">{{expandText || openHourLength < 90 ? openHourDetails: (openHourDetails | slice:0:90)}}</p>
+                                        <a [routerLink]="" (click)="expandText = !expandText" *ngIf="expandText == false && openHourLength>= 90" style="text-decoration: underline; color: #4FB8DB; cursor: pointer;">Show More <fa-icon [icon]="['fas', 'angle-down']" style="font-size: 15px; color: #fff;"></fa-icon></a>
+                                        <a [routerLink]="" (click)="expandText = !expandText" *ngIf="expandText == true" style="text-decoration: underline; color: #4FB8DB; cursor: pointer;">Show Less <fa-icon [icon]="['fas', 'angle-down']" rotate = "180" style="font-size: 15px; color: #fff"></fa-icon></a>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12" style="margin-top: 20px;" *ngIf="venueGeneralRule">
+                                    <h4 style="color: #00FFD3;">General Rule</h4>
+                                    <div>
+                                        <p style="color: #fff; margin-bottom: 4px;">{{expandGeneralInfo || generalRuleLength < 100 ? venueGeneralRule: (venueGeneralRule | slice:0:100)}}</p>
+                                        <a  [routerLink]="" (click)="expandGeneralInfo = !expandGeneralInfo" *ngIf="expandGeneralInfo == false && generalRuleLength>= 100" style="text-decoration: underline; color: #4FB8DB; cursor: pointer;">Show More <fa-icon [icon]="['fas', 'angle-down']" style="font-size: 15px; color: #fff;"></fa-icon></a>
+                                        <a [routerLink]="" (click)="expandGeneralInfo = !expandGeneralInfo" *ngIf="expandGeneralInfo == true" style="text-decoration: underline; color: #4FB8DB; cursor: pointer;">Show Less <fa-icon [icon]="['fas', 'angle-down']" rotate = "180" style="font-size: 15px; color: #fff"></fa-icon></a>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12" style="margin-top: 20px;" *ngIf="venueChildRule">
+                                    <h4 style="color: #00FFD3;">Child Rule</h4>
+                                    <div>
+                                        <p style="color: #fff; margin-bottom: 4px;">{{expandChildInfo || childRuleLength < 100 ? venueChildRule: (venueChildRule | slice:0:100)}}</p>
+                                        <a  [routerLink]="" (click)="expandChildInfo = !expandChildInfo" *ngIf="expandChildInfo == false && childRuleLength>= 90" style="text-decoration: underline; color: #4FB8DB; cursor: pointer;">Show More <fa-icon [icon]="['fas', 'angle-down']" style="font-size: 15px; color: #fff;"></fa-icon></a>
+                                        <a [routerLink]="" (click)="expandChildInfo = !expandChildInfo" *ngIf="expandChildInfo == true" style="text-decoration: underline; color: #4FB8DB; cursor: pointer;">Show Less <fa-icon [icon]="['fas', 'angle-down']" rotate = "180" style="font-size: 15px; color: #fff"></fa-icon></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12" >
+                            <div class="button-container" style="text-align: center; margin-top: 25px;">
+                                <!-- Button trigger modal -->
+                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop" (click)="showGoogleMap()">
+                                    Show venue on Google map
+                                </button>
+            
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </mat-tab>
+        </mat-tab-group>
+    </div>
+</div>
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content" style="margin-top: -300px;">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel" style="color: black;">Event Venue</h1>
+            </div>
+            <div class="modal-body">
+                <google-map height="400px" width="99%" [center]= "center" [zoom]="zoom">
+                    <map-marker [position]="position"></map-marker>
+                </google-map>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-dark me-auto" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- <div class="d-flex justify-content-center">
+    
+</div> -->

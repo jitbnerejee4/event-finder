@@ -1,0 +1,32 @@
+<div class="table-responsive" *ngIf="favouritesArray && favouritesArray.length > 0" style="margin: auto; text-align: center;">
+    <h5 style="color: #00FFD3; margin-bottom: 20px;">List of your favourite events</h5>
+    <table class="table table-light table-hover align-middle fav-table">
+        <thead>
+        <tr>
+            <th scope="col" class="number">#</th>
+            <th scope="col" class="date">Date</th>
+            <th scope="col" class="event">Event</th>
+            <th scope="col" class="category">Category</th>
+            <th scope="col" class="venue">Venue</th>
+            <th scope="col" class="favourite">Favorite</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let favourite of favouritesArray let i = index" class="datarow">
+                <td>{{i+1}}</td>
+                <td>{{favourite.date}}</td>
+                <td>{{favourite.event}}</td>
+                <td>{{favourite.category}}</td>
+                <td>{{favourite.venue}}</td>
+                <td style="cursor: pointer;" id={{favourite.id}} appDelete><fa-icon [icon]="['far', 'trash-can']"></fa-icon></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="container no-result-container" *ngIf="!favouritesArray || favouritesArray.length == 0" style="max-width: 500px; min-width: 300px;">
+    <div class="row">
+        <div class="col-md-12">
+            <h5>No favourite event to show</h5>
+        </div>
+    </div>
+</div>

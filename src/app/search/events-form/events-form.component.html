@@ -1,0 +1,57 @@
+<div class="container-md form-container" style="max-width: 500px;">
+    <div class="row header-container">
+        <div class="col-sm-12">
+            <h2 class="text-center">Events Search</h2>
+            <hr>
+        </div>
+    </div>
+    <form [formGroup]="detailsForm" ngNativeValidate (ngSubmit)="onSubmit()">
+        <div class="row form-row">
+            <div class="col col-lg-12 col-sm-12 form-group mb-3">
+                <label for="keyWord" style="color: #B5E1EF;">Keyword <span style="color: red;">*</span></label>
+                <!-- <input type="text" [formControl]="eventKeyword" class="form-control" id = "keyWord" autocomplete="off" ngNativeValidate required>  -->
+                <input matInput [matAutocomplete]="auto" [formControl]="eventKeyword" class="form-control" id = "keyWord" #keywordref autocomplete="off" ngNativeValidate required>
+                <mat-autocomplete #auto="matAutocomplete">
+                    <mat-option *ngIf="isLoading" class="is-loading"><mat-spinner diameter="25"></mat-spinner></mat-option>
+                    <mat-option *ngFor="let option of options" [value]="option">{{option}}</mat-option>
+                </mat-autocomplete>
+            </div>
+        </div>
+        <div class="row form-row">
+            <div class="col-md-6 form-group mb-3">
+                <label for="disTance" style="color: #B5E1EF;">Distance</label>
+                <input type="number" formControlName="distance" class="form-control" #distanceref id="disTance" placeholder="10" value=10 autocomplete="off"> 
+            </div>
+            <div class="col-12 col-md-6 form-group mb-3">
+                <label for="caTegory" style="color: #B5E1EF;">Category <span style="color: red;">*</span></label>
+                <select formControlName="category" class="form-select" id="caTegory" #categoryref autocomplete="off"> 
+                    <option value="default">Default</option>
+                    <option>Music</option>
+                    <option>Sports</option>
+                    <option>Arts & Theatre</option>
+                    <option>Film</option>
+                    <option>Miscellaneous</option>
+                    
+                </select>
+            </div>
+        </div>
+        <div class="row form-row" #locationDiv>
+            <div class="col col-lg-12 col-sm-12 form-group mb-3" #locationInput>
+                <label for="loCation" style="color: #B5E1EF;">Location <span style="color: red;">*</span></label>
+                <input formControlName="location" type="text" class="form-control" #locationref id = "loCation" autocomplete="off" required> 
+            </div>
+        </div>
+        <div class="form-check"  style="margin-left: 20px;">
+            <input formControlName="autolocation" class="form-check-input" type="checkbox" id="flexCheckDefault" (change)="checkChecked()" #locationCheckBox>
+            <label class="form-check-label" for="flexCheckDefault" style="color: #B5E1EF;">
+              Auto-detect your location
+            </label>
+        </div>
+        <div class="row text-center mt-2 pb-4">
+            <div class="col col-lg-12 col-sm-12 form-group mb-3">
+                <button class="btn btn-danger me-3" type="submit" [routerLink]="">SUBMIT</button>
+                <button class="btn btn-primary" type="button" (click) = clearFields() [routerLink]="">CLEAR</button>
+            </div>
+        </div>
+    </form>
+</div>
